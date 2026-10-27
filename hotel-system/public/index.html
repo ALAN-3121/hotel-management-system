@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>云栖酒店 · 栖于云间，一宿山水</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="description" content="云栖酒店 —— 山与江之间的精品度假酒店，128 间客房，360° 全景看房，在线预订。">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-cn">云栖酒店</span>
+      <span class="brand-en">Yunqi Hotel</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html">首页</a>
+      <a href="rooms.html">客房</a>
+      <a href="orders.html">我的订单</a>
+      <a href="admin/dashboard.html" data-admin-nav style="display:none">管理后台</a>
+    </nav>
+    <div class="header-actions" id="headerActions"></div>
+  </div>
+</header>
+
+<!-- ==================== 首屏 ==================== -->
+<section class="hero">
+  <div class="hero-media">
+    <img src="img/hero.jpg" alt="云栖酒店泳池与山景">
+  </div>
+
+  <div class="hero-body">
+    <div class="container">
+      <p class="eyebrow">Yunqi Hotel · 北纬 30° 的山与江</p>
+      <h1 class="hero-title">栖于云间<br><em>一宿山水</em></h1>
+      <p class="hero-sub">
+        128 间客房悬于江岸之上，落地窗外是流动的晨雾与山脊。
+        我们不提供标准化的睡眠，只提供一段可以被记住的清晨。
+      </p>
+    </div>
+  </div>
+
+  <form class="search-panel" id="searchForm">
+    <div class="search-field">
+      <label for="checkIn">入住日期</label>
+      <input type="date" id="checkIn" name="checkIn" required>
+    </div>
+    <div class="search-field">
+      <label for="checkOut">离店日期</label>
+      <input type="date" id="checkOut" name="checkOut" required>
+    </div>
+    <div class="search-field">
+      <label for="guests">入住人数</label>
+      <select id="guests" name="guests">
+        <option value="1">1 位</option>
+        <option value="2" selected>2 位</option>
+        <option value="3">3 位</option>
+        <option value="4">4 位</option>
+      </select>
+    </div>
+    <button class="btn btn-gold" type="submit">查询空房</button>
+  </form>
+</section>
+
+<!-- ==================== 数据条 ==================== -->
+<section class="stats-strip">
+  <div class="container">
+    <div class="stats-grid reveal">
+      <div class="stat-item">
+        <div class="stat-num" id="statRooms">20<small>间</small></div>
+        <div class="stat-label">在售客房</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4<small>种</small></div>
+        <div class="stat-label">精选房型</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">360<small>°</small></div>
+        <div class="stat-label">全景看房</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">24<small>h</small></div>
+        <div class="stat-label">管家服务</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 房型 ==================== -->
+<section class="section" id="rooms">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Rooms &amp; Suites</p>
+      <h2>四种停留的方式</h2>
+      <p>每一间客房都朝向江面。你可以选择一间小而安静的，也可以选择整层只属于你的。</p>
+    </div>
+
+    <div class="room-grid" id="roomGrid">
+      <div class="loading" style="grid-column:1/-1">正在加载房型…</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 关于 ==================== -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="split reveal">
+      <div class="split-media">
+        <img src="img/about-1.jpg" alt="酒店建筑外观">
+        <img class="inset" src="img/about-2.jpg" alt="无边泳池">
+      </div>
+      <div class="split-body">
+        <p class="eyebrow">About Yunqi</p>
+        <h2>把山水的节奏<br>搬进一间房</h2>
+        <p>
+          云栖酒店由旧时的江畔粮仓改造而成，保留了混凝土的粗粝肌理，
+          又用暖木与亚麻把光线重新梳理了一遍。建筑不做主角，它只是把窗外的山、江、雾请进来。
+        </p>
+        <p>
+          我们把服务压缩到最少：不打扰、不喧哗、不设闹钟。
+          需要时，管家会在一分钟内出现；不需要时，整层楼都是安静的。
+        </p>
+        <ul class="feature-list">
+          <li>江景与山景双朝向</li>
+          <li>全屋智能控光</li>
+          <li>本地食材早餐</li>
+          <li>私汤与户外泳池</li>
+          <li>24 小时云端管家</li>
+          <li>免费接驳车</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 服务 ==================== -->
+<section class="section" style="background:#fff;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)">
+  <div class="container">
+    <div class="section-head reveal" style="text-align:center;margin-bottom:56px">
+      <p class="eyebrow">Services</p>
+      <h2 style="display:inline-block">住进来之后</h2>
+    </div>
+    <div class="service-grid reveal">
+      <div class="service-item">
+        <h3>云端管家</h3>
+        <p>入住前 24 小时收到一份问卷，枕头软硬、水温、早餐时间都会被提前记住。</p>
+      </div>
+      <div class="service-item">
+        <h3>山景餐厅</h3>
+        <p>主厨每日清晨从山下市集采买，菜单随季节更换，只做当日最新鲜的六道。</p>
+      </div>
+      <div class="service-item">
+        <h3>私汤 SPA</h3>
+        <p>引自山体的天然温泉，八间独立汤屋，可预约至深夜。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CTA ==================== -->
+<section style="position:relative;overflow:hidden;padding:110px 0;background:var(--ink);color:#fff">
+  <img src="img/suite-3.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.28">
+  <div class="container" style="position:relative;z-index:2;text-align:center">
+    <p class="eyebrow" style="color:rgba(255,255,255,.6)">Reservation</p>
+    <h2 style="font-size:34px;letter-spacing:.14em;margin-top:16px">选一个日子，来这里什么都不做</h2>
+    <p style="margin:18px auto 32px;max-width:480px;color:rgba(255,255,255,.66);font-size:13.5px;line-height:2">
+      在线选房、实时确认、到店即入住。注册成为会员，可享银卡 95 折、金卡 9 折礼遇。
+    </p>
+    <a class="btn btn-gold" href="rooms.html">查看全部房型</a>
+  </div>
+</section>
+
+<!-- ==================== 页脚 ==================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <span class="brand-cn">云栖酒店</span>
+          <span class="brand-en">Yunqi</span>
+        </div>
+        <p>
+          江城北岸 · 云栖路 1 号<br>
+          预订电话 400-000-0000<br>
+          每日 08:00 — 22:00
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>探索</h4>
+        <ul>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="rooms.html">全部房型</a></li>
+          <li><a href="orders.html">我的订单</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>服务</h4>
+        <ul>
+          <li>入住与退房</li>
+          <li>会员礼遇</li>
+          <li>接驳车预约</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>关注</h4>
+        <ul>
+          <li>微信公众号</li>
+          <li>小红书</li>
+          <li>Instagram</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 云栖酒店 YUNQI HOTEL. 本站为《网页设计与网站建设》课程作业，非商业用途。</span>
+      <span>Designed &amp; Built with HTML / CSS / JavaScript</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/common.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

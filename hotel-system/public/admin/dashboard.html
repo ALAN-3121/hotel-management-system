@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>经营概览 · 云栖酒店管理后台</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body">
+
+<div class="admin-shell">
+  <aside class="admin-side" id="adminSide"></aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div>
+        <h1>经营概览</h1>
+        <p id="todayLine">—</p>
+      </div>
+      <div class="admin-user" id="adminUser"></div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="kpi-label">今日入住率</div>
+        <div class="kpi-value" id="kpiRate">—</div>
+        <div class="kpi-sub" id="kpiRateSub">在住 / 在售客房</div>
+        <span class="kpi-accent"></span>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">今日待入住</div>
+        <div class="kpi-value" id="kpiIn">—</div>
+        <div class="kpi-sub">已预订、尚未办理入住</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">今日待退房</div>
+        <div class="kpi-value" id="kpiOut">—</div>
+        <div class="kpi-sub">12:00 前应办理退房</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">累计营收</div>
+        <div class="kpi-value" id="kpiRevenue">—</div>
+        <div class="kpi-sub">已退房订单结算金额</div>
+      </div>
+    </div>
+
+    <div class="chart-grid">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>近 7 天入住率</h2>
+          <span class="hint">按每日占用房间数 / 在售客房数</span>
+        </div>
+        <div class="chart" id="trendChart"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head">
+          <h2>各房型今日占用</h2>
+          <span class="hint">单位：间</span>
+        </div>
+        <div class="chart" id="typeChart"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <h2>今日待办</h2>
+        <a class="mini-btn" href="bookings.html?status=pending">查看全部订单</a>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>订单号</th><th>客人</th><th>房型 / 房间</th><th>入住 — 离店</th><th>金额</th><th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="todoBody">
+            <tr><td colspan="6" style="color:var(--muted)">加载中…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../vendor/echarts.min.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/admin.js"></script>
+<script src="../js/admin-dashboard.js"></script>
+</body>
+</html>

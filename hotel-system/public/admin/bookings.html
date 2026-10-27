@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>订单管理 · 云栖酒店管理后台</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body">
+
+<div class="admin-shell">
+  <aside class="admin-side" id="adminSide"></aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div>
+        <h1>订单管理</h1>
+        <p>确认入住、办理退房。退房时按「中午 12 点为界」规则结算房费，金卡会员宽限至 14:00。</p>
+      </div>
+      <div class="admin-user" id="adminUser"></div>
+    </div>
+
+    <div class="panel">
+      <div class="toolbar">
+        <div class="chips" id="statusChips">
+          <button class="chip is-active" data-status="all" type="button">全部</button>
+          <button class="chip" data-status="pending" type="button">已预订</button>
+          <button class="chip" data-status="checked_in" type="button">入住中</button>
+          <button class="chip" data-status="checked_out" type="button">已退房</button>
+          <button class="chip" data-status="cancelled" type="button">已取消</button>
+        </div>
+        <input class="input" id="keyword" type="search" placeholder="搜索订单号 / 姓名 / 房间号" style="margin-left:auto">
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>订单号</th><th>客人</th><th>房型 / 房间</th><th>入住 — 离店</th>
+              <th>金额</th><th>状态</th><th style="text-align:right">操作</th>
+            </tr>
+          </thead>
+          <tbody id="bookingBody">
+            <tr><td colspan="7" style="color:var(--muted)">加载中…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../js/common.js"></script>
+<script src="../js/admin.js"></script>
+<script src="../js/admin-bookings.js"></script>
+</body>
+</html>

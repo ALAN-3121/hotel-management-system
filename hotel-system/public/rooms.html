@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>客房 · 云栖酒店</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-cn">云栖酒店</span>
+      <span class="brand-en">Yunqi Hotel</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html">首页</a>
+      <a href="rooms.html">客房</a>
+      <a href="orders.html">我的订单</a>
+      <a href="admin/dashboard.html" data-admin-nav style="display:none">管理后台</a>
+    </nav>
+    <div class="header-actions" id="headerActions"></div>
+  </div>
+</header>
+
+<section class="page-banner">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">首页</a><span>/</span>客房</div>
+    <h1>客房与套房</h1>
+    <p>四种房型，共 20 间客房。选择日期后可查看实时剩余房量，价格已按你的会员等级计算。</p>
+  </div>
+</section>
+
+<div class="filter-bar">
+  <div class="container filter-inner">
+    <div class="filter-item">
+      <label for="fCheckIn">入住</label>
+      <input type="date" id="fCheckIn">
+    </div>
+    <div class="filter-item">
+      <label for="fCheckOut">离店</label>
+      <input type="date" id="fCheckOut">
+    </div>
+    <div class="filter-item" style="min-width:110px">
+      <label for="fGuests">人数</label>
+      <select id="fGuests">
+        <option value="0">不限</option>
+        <option value="1">1 位</option>
+        <option value="2" selected>2 位</option>
+        <option value="3">3 位</option>
+        <option value="4">4 位</option>
+      </select>
+    </div>
+    <div class="filter-item" style="min-width:130px">
+      <label for="fSort">排序</label>
+      <select id="fSort">
+        <option value="default">推荐排序</option>
+        <option value="asc">价格从低到高</option>
+        <option value="desc">价格从高到低</option>
+      </select>
+    </div>
+    <div class="filter-count" id="filterCount"></div>
+  </div>
+</div>
+
+<section style="padding:44px 0 96px">
+  <div class="container">
+    <div class="room-grid" id="roomGrid">
+      <div class="loading" style="grid-column:1/-1">正在查询空房…</div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom" style="border:0;padding-top:0">
+      <span>© 2026 云栖酒店 YUNQI HOTEL</span>
+      <span>课程作业 · 非商业用途</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/common.js"></script>
+<script src="js/rooms.js"></script>
+</body>
+</html>

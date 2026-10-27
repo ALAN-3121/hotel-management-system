@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>我的订单 · 云栖酒店</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-cn">云栖酒店</span>
+      <span class="brand-en">Yunqi Hotel</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html">首页</a>
+      <a href="rooms.html">客房</a>
+      <a href="orders.html">我的订单</a>
+      <a href="admin/dashboard.html" data-admin-nav style="display:none">管理后台</a>
+    </nav>
+    <div class="header-actions" id="headerActions"></div>
+  </div>
+</header>
+
+<section class="page-banner" style="padding-bottom:52px">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">首页</a><span>/</span>我的订单</div>
+    <h1>我的订单</h1>
+    <p id="orderSummary">查看预订记录、取消未入住订单。</p>
+  </div>
+</section>
+
+<div class="orders-wrap">
+  <div class="container">
+    <div id="orderList"><div class="loading">正在加载…</div></div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom" style="border:0;padding-top:0">
+      <span>© 2026 云栖酒店 YUNQI HOTEL</span>
+      <span>课程作业 · 非商业用途</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/common.js"></script>
+<script src="js/orders.js"></script>
+</body>
+</html>

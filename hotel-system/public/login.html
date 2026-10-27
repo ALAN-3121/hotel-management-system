@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>登录 · 云栖酒店</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<div class="auth-page">
+  <div class="auth-visual">
+    <div class="auth-visual-inner">
+      <div class="brand" style="margin-bottom:28px">
+        <span class="brand-cn" style="color:#fff">云栖酒店</span>
+        <span class="brand-en" style="color:rgba(255,255,255,.6)">Yunqi Hotel</span>
+      </div>
+      <h2>留一扇窗给山</h2>
+      <p>
+        登录后可查看订单、管理入住信息。银卡会员享 95 折，金卡会员享 9 折，
+        并可将退房时间延长至下午 14:00。
+      </p>
+    </div>
+  </div>
+
+  <div class="auth-main">
+    <div class="auth-box">
+      <a href="index.html" style="font-size:12px;color:var(--muted);letter-spacing:.1em">← 返回首页</a>
+
+      <div class="auth-tabs" style="margin-top:32px">
+        <button class="auth-tab is-active" data-tab="login" type="button">登录</button>
+        <button class="auth-tab" data-tab="register" type="button">注册</button>
+      </div>
+
+      <!-- 登录 -->
+      <form class="auth-form" id="loginForm">
+        <div class="field">
+          <label for="loginUser">账号</label>
+          <input class="input" id="loginUser" name="username" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label for="loginPass">密码</label>
+          <input class="input" id="loginPass" name="password" type="password" autocomplete="current-password" required>
+        </div>
+        <button class="btn btn-gold btn-block" type="submit">登 录</button>
+      </form>
+
+      <!-- 注册 -->
+      <form class="auth-form" id="registerForm" style="display:none">
+        <div class="field">
+          <label for="regUser">账号（3-20 位字母或数字）</label>
+          <input class="input" id="regUser" name="username" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label for="regName">姓名</label>
+          <input class="input" id="regName" name="realName" required>
+        </div>
+        <div class="field">
+          <label for="regPhone">手机号（可选）</label>
+          <input class="input" id="regPhone" name="phone" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="regPass">密码（至少 6 位）</label>
+          <input class="input" id="regPass" name="password" type="password" autocomplete="new-password" required>
+        </div>
+        <button class="btn btn-gold btn-block" type="submit">注 册 并 登 录</button>
+      </form>
+
+      <div class="auth-hint">
+        演示账号：管理员 <b>admin</b> / 普通用户 <b>zhangxy</b>、<b>chenjing</b>（金卡）
+        <br>密码统一为 <b>123456</b>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

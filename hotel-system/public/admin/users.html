@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>会员管理 · 云栖酒店管理后台</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body">
+
+<div class="admin-shell">
+  <aside class="admin-side" id="adminSide"></aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div>
+        <h1>会员管理</h1>
+        <p>调整会员等级。银卡享 95 折、金卡享 9 折，且金卡可将退房时间延长至 14:00。</p>
+      </div>
+      <div class="admin-user" id="adminUser"></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <h2>会员列表</h2>
+        <span class="hint" id="userCount"></span>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>姓名</th><th>账号</th><th>手机号</th><th>角色</th>
+              <th>会员等级</th><th>订单数</th><th>累计消费</th>
+            </tr>
+          </thead>
+          <tbody id="userBody">
+            <tr><td colspan="7" style="color:var(--muted)">加载中…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../js/common.js"></script>
+<script src="../js/admin.js"></script>
+<script src="../js/admin-users.js"></script>
+</body>
+</html>

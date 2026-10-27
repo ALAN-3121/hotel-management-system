@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>客房管理 · 云栖酒店管理后台</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body">
+
+<div class="admin-shell">
+  <aside class="admin-side" id="adminSide"></aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div>
+        <h1>客房管理</h1>
+        <p>调整客房数量、维护房间状态。房间号唯一，停用前需确认无未完成订单。</p>
+      </div>
+      <div class="admin-user" id="adminUser"></div>
+    </div>
+
+    <div class="panel">
+      <div class="toolbar">
+        <button class="btn btn-sm btn-gold" id="addRoomBtn" type="button">+ 新增客房</button>
+        <select class="select" id="typeFilter">
+          <option value="">全部房型</option>
+        </select>
+        <select class="select" id="statusFilter">
+          <option value="">全部状态</option>
+          <option value="idle">空闲</option>
+          <option value="booked">已预订</option>
+          <option value="occupied">入住中</option>
+          <option value="cleaning">待清洁</option>
+          <option value="maintenance">维修停用</option>
+        </select>
+        <span class="hint" id="roomCount" style="margin-left:auto;font-size:12px;color:var(--muted)"></span>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>房间号</th><th>房型</th><th>楼层</th><th>门市价</th><th>状态</th><th style="text-align:right">操作</th>
+            </tr>
+          </thead>
+          <tbody id="roomBody">
+            <tr><td colspan="6" style="color:var(--muted)">加载中…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- 新增 / 编辑弹窗 -->
+<div class="modal" id="roomModal">
+  <div class="modal-panel">
+    <button class="modal-close" type="button" data-close>×</button>
+    <h2 style="font-size:18px;letter-spacing:.1em;margin-bottom:24px" id="modalTitle">新增客房</h2>
+    <form class="form-grid" id="roomForm">
+      <input type="hidden" id="roomId">
+      <div class="field">
+        <label for="fRoomNo">房间号</label>
+        <input class="input" id="fRoomNo" required placeholder="如 402">
+      </div>
+      <div class="field">
+        <label for="fFloor">楼层</label>
+        <input class="input" id="fFloor" type="number" min="1" max="99" required>
+      </div>
+      <div class="field">
+        <label for="fTypeId">房型</label>
+        <select class="select" id="fTypeId" required></select>
+      </div>
+      <div class="field">
+        <label for="fStatus">状态</label>
+        <select class="select" id="fStatus">
+          <option value="idle">空闲</option>
+          <option value="booked">已预订</option>
+          <option value="occupied">入住中</option>
+          <option value="cleaning">待清洁</option>
+          <option value="maintenance">维修停用</option>
+        </select>
+      </div>
+      <div class="field is-full" style="margin-top:8px">
+        <button class="btn btn-gold btn-block" type="submit">保 存</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="../js/common.js"></script>
+<script src="../js/admin.js"></script>
+<script src="../js/admin-rooms.js"></script>
+</body>
+</html>

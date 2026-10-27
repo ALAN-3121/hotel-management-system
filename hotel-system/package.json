@@ -1,0 +1,26 @@
+{
+  "name": "hotel-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "云栖酒店客房管理系统 —— 《网页设计与网站建设》分组作业",
+  "main": "server.js",
+  "scripts": {
+    "init": "node --experimental-sqlite db/init.js",
+    "start": "node --experimental-sqlite server.js",
+    "dev": "node --experimental-sqlite --watch server.js"
+  },
+  "keywords": [
+    "hotel",
+    "express",
+    "mysql",
+    "sqlite"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "express-session": "^1.19.0",
+    "mysql2": "^3.24.6"
+  }
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>房型详情 · 云栖酒店</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="vendor/pannellum.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-cn">云栖酒店</span>
+      <span class="brand-en">Yunqi Hotel</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html">首页</a>
+      <a href="rooms.html">客房</a>
+      <a href="orders.html">我的订单</a>
+      <a href="admin/dashboard.html" data-admin-nav style="display:none">管理后台</a>
+    </nav>
+    <div class="header-actions" id="headerActions"></div>
+  </div>
+</header>
+
+<div class="detail-wrap">
+  <div class="container">
+    <div class="breadcrumb" style="color:var(--muted);margin-bottom:28px;padding-top:calc(var(--header-h) - 20px)">
+      <a href="index.html">首页</a><span>/</span><a href="rooms.html">客房</a><span>/</span><span id="crumbName">房型详情</span>
+    </div>
+
+    <div class="detail-layout">
+      <!-- 左：图集 + 介绍 -->
+      <div>
+        <div class="gallery-main" id="galleryMain">
+          <img id="mainImage" src="" alt="房型实拍">
+          <div class="gallery-actions">
+            <button class="pano-btn" id="panoBtn" type="button">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <circle cx="12" cy="12" r="9"></circle>
+                <ellipse cx="12" cy="12" rx="4" ry="9"></ellipse>
+                <path d="M3 12h18"></path>
+              </svg>
+              360° 全景看房
+            </button>
+          </div>
+        </div>
+        <div class="gallery-thumbs" id="thumbs"></div>
+
+        <h1 class="detail-title" id="roomName">加载中…</h1>
+        <div class="detail-meta" id="roomMeta"></div>
+
+        <div class="detail-section">
+          <h3>房型介绍</h3>
+          <p id="roomIntro"></p>
+        </div>
+
+        <div class="detail-section">
+          <h3>房间设施</h3>
+          <div id="roomFeatures"></div>
+        </div>
+
+        <div class="detail-section">
+          <h3>该房型的房间</h3>
+          <div id="roomList" style="display:flex;flex-wrap:wrap;gap:10px"></div>
+          <p style="margin-top:14px;font-size:12px;color:var(--muted-light)">
+            房间状态：空闲 / 已预订 / 入住中 / 待清洁 / 维修停用
+          </p>
+        </div>
+      </div>
+
+      <!-- 右：预订面板 -->
+      <aside class="booking-panel">
+        <div class="panel-head">
+          <div class="price" id="panelPrice"><small>¥</small>—</div>
+          <span style="font-size:12px;color:var(--muted)">/ 晚</span>
+        </div>
+
+        <form class="panel-form" id="bookingForm">
+          <div class="panel-row">
+            <div class="field">
+              <label for="bCheckIn">入住日期</label>
+              <input class="input" type="date" id="bCheckIn" required>
+            </div>
+            <div class="field">
+              <label for="bCheckOut">离店日期</label>
+              <input class="input" type="date" id="bCheckOut" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="bGuests">入住人数</label>
+            <select class="select" id="bGuests">
+              <option value="1">1 位</option>
+              <option value="2" selected>2 位</option>
+              <option value="3">3 位</option>
+              <option value="4">4 位</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="bRemark">备注（可选）</label>
+            <input class="input" type="text" id="bRemark" maxlength="60" placeholder="如：需要无烟房、高楼层">
+          </div>
+
+          <div class="summary" id="summary">
+            <div class="summary-row"><span>房费</span><span id="sumRoom">—</span></div>
+            <div class="summary-row"><span>会员折扣</span><span class="discount" id="sumDiscount">—</span></div>
+            <div class="summary-row is-total"><span>合计</span><b id="sumTotal">—</b></div>
+          </div>
+
+          <button class="btn btn-gold btn-block" type="submit" id="submitBtn">立即预订</button>
+          <p class="panel-note">
+            入住当日 14:00 后可办理入住，退房时间为次日 12:00。<br>
+            金卡会员可延至 14:00 退房，超时按 1 天房费加收。
+          </p>
+        </form>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- 全景查看器 -->
+<div class="pano-modal" id="panoModal">
+  <button class="pano-close" id="panoClose" type="button" aria-label="关闭">×</button>
+  <div id="panoViewer"></div>
+  <div class="pano-hint">拖动查看四周 · 滚轮缩放</div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom" style="border:0;padding-top:0">
+      <span>© 2026 云栖酒店 YUNQI HOTEL</span>
+      <span>课程作业 · 非商业用途</span>
+    </div>
+  </div>
+</footer>
+
+<script src="vendor/pannellum.js"></script>
+<script src="js/common.js"></script>
+<script src="js/room.js"></script>
+</body>
+</html>
