@@ -134,12 +134,13 @@ function buildBookings(idOf, roomIdOf) {
   const d = (n) => addDays(T, n);
   return [
     // 历史订单（用于营收统计与曲线）
-    { user: 'zhangxy', room: '301', in: d(-9), out: d(-7), status: 'checked_out', guests: 2, remark: '高楼层安静房' },
+    // 其中 301 这一单标记 ot（overtime），用于演示「超过 12 点退房加收一天」
+    { user: 'zhangxy', room: '301', in: d(-9), out: d(-7), status: 'checked_out', guests: 2, remark: '高楼层安静房', ot: true },
     { user: 'liwenbo', room: '501', in: d(-8), out: d(-6), status: 'checked_out', guests: 2 },
     { user: 'chenjing', room: '801', in: d(-6), out: d(-4), status: 'checked_out', guests: 2, remark: '纪念日布置' },
     { user: 'zhaoym', room: '601', in: d(-4), out: d(-2), status: 'checked_out', guests: 4 },
     { user: 'sunqi', room: '302', in: d(-3), out: d(-2), status: 'checked_out', guests: 1 },
-    { user: 'chenjing', room: '802', in: d(-2), out: d(1), status: 'checked_out', guests: 3 },
+    { user: 'chenjing', room: '802', in: d(-2), out: d(-1), status: 'checked_out', guests: 3 },
 
     // 入住中
     { user: 'liwenbo', room: '502', in: d(-1), out: d(2), status: 'checked_in', guests: 2 },
@@ -225,9 +226,13 @@ async function main() {
     const type = typeByRoom[b.room];
     const user = USERS.find((u) => u.username === b.user);
     const q = quote({ price: type.price, discountVip1: 0.95, discountVip2: 0.9 }, b.in, b.out, user.vip);
+    // ot = true 的订单按「超时退房」结算：多算一天，退房时刻记在 15:20
+    const qOt = b.ot
+      ? quote({ price: type.price, discountVip1: 0.95, discountVip2: 0.9 }, b.in, addDays(b.out, 1), user.vip)
+      : null;
     const orderNo = `H${b.in.replace(/-/g, '')}${String(1000 + seq++)}`;
     const checkedInAt = b.status === 'pending' || b.status === 'cancelled' ? null : `${b.in} 14:20:00`;
-    const checkedOutAt = b.status === 'checked_out' ? `${b.out} 11:40:00` : null;
+    const checkedOutAt = b.status === 'checked_out' ? `${b.out} ${b.ot ? '15:20:00' : '11:40:00'}` : null;
 
     await db.run(
       `INSERT INTO bookings
@@ -236,7 +241,9 @@ async function main() {
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         orderNo, b.userId, b.roomId, type.id, b.in, b.out, b.guests, b.status,
-        q.amount, b.status === 'checked_out' ? q.amount : null, b.remark || null,
+        q.amount,
+        b.status !== 'checked_out' ? null : (qOt ? qOt.amount : q.amount),
+        b.remark || null,
         `${b.in} 10:12:00`, checkedInAt, checkedOutAt,
       ]
     );

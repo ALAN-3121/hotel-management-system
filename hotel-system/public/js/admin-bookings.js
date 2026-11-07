@@ -72,7 +72,11 @@
           <td>${dateCN(b.checkIn)} — ${dateCN(b.checkOut)}
             <span style="color:var(--muted-light);font-size:11.5px">（${nights} 晚）</span></td>
           <td class="num">¥${money(amount)}
-            ${b.finalAmount !== null && b.finalAmount !== b.amount ? '<span style="font-size:11px;color:var(--gold)">已结算</span>' : ''}</td>
+            ${b.finalAmount !== null && b.finalAmount !== b.amount
+              ? `<div style="font-size:11px;color:var(--gold);line-height:1.6">
+                   预估 ¥${money(b.amount)} · 含超时加收 ¥${money(b.finalAmount - b.amount)}
+                 </div>`
+              : ''}</td>
           <td><span class="${ADMIN_STATUS_CLASS[b.status]}">${ADMIN_STATUS_TEXT[b.status]}</span></td>
           <td><div class="actions" style="justify-content:flex-end">${actions}</div></td>
         </tr>`;
