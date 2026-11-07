@@ -8,6 +8,9 @@
 
 ## 一、运行方式
 
+> **当前配置**：`.env` 已设为 MySQL（`hotel_system` 库，账号密码见 `.env`），与实验报告中的建表 SQL 一致。
+> 如需免安装演示，把 `.env` 里的 `DB_DRIVER` 改成 `sqlite` 即可，其余不用动。
+
 ### 方式 A：双击启动（最简单，演示用这个）
 
 双击项目根目录下的 **`启动演示.bat`**。
@@ -17,6 +20,7 @@
 - 服务地址：<http://localhost:3000>
 - 停止服务：关闭那个黑色命令行窗口，或按 `Ctrl + C`
 - 重置数据：先关掉服务窗口，再双击 `重置演示数据.bat`
+- 脚本会读取 `.env` 判断数据库类型：MySQL 模式不会自动初始化，避免每次启动都清空数据
 
 > 如果提示「没有找到 Node.js」，说明这台电脑没装 Node.js。到 <https://nodejs.org/zh-cn> 下载安装（全部默认选项），装完重新双击即可。脚本会优先使用系统 PATH 里的 Node，找不到时才回退到 WorkBuddy 自带的运行时。
 
@@ -34,9 +38,9 @@ npm start        # 启动服务，浏览器访问 http://localhost:3000
 > 这不是项目的问题，而是当前电脑没有安装 Node.js，或安装后没有加入系统 PATH。
 > 请改用方式 A 双击启动，或安装 Node.js 后重启命令行窗口。
 
-### 方式 C：使用 MySQL（与报告中的建表 SQL 一致）
+### 方式 C：切换到 MySQL（当前已启用）
 
-1. 复制 `.env.example` 为 `.env`，把 `DB_DRIVER` 改为 `mysql`，并填写数据库账号密码：
+1. 编辑 `.env`，把 `DB_DRIVER` 设为 `mysql`，并填写数据库账号密码：
 
 ```ini
 DB_DRIVER=mysql
@@ -47,12 +51,12 @@ DB_PASSWORD=你的密码
 DB_NAME=hotel_system
 ```
 
-2. 双击 `启动演示.bat`（或执行 `npm run init` 后 `npm start`），会自动建库、建表、灌数据。
+2. 执行 `npm run init`（或双击 `重置演示数据.bat`），会自动建库、建表、灌数据。
 
-也可以直接在 Navicat 中执行 `db/schema.mysql.sql` 手动建表。
+也可以直接在 Navicat 中执行 `db/schema.mysql.sql` 手动建表，效果相同。
 
-> 默认配置使用内置 SQLite，数据文件在 `data/hotel.db`，不需要安装任何数据库即可演示。
-> 两种数据库的表结构与业务代码完全一致，切换只需改 `.env` 里的 `DB_DRIVER`。
+> 两种数据库的表结构与业务代码完全一致，切换只需改 `.env` 里的 `DB_DRIVER` 一行。
+> SQLite 模式的数据文件在 `data/hotel.db`，不需要安装任何数据库即可演示。
 
 ### 演示账号
 
